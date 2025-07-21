@@ -1,0 +1,16 @@
+name: Build Mkdocs Site
+description: Builds the St Clair Community Mkdocs site.
+inputs:
+  config:
+    description: The path to the mkdocs.yml file.
+    required: false
+    default: .github/mkdocs.yml
+runs:
+  using: composite
+  steps:
+    - name: Build Mkdocs Site and Push
+      shell: bash
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+        mkdocs gh-deploy --config-file ${{ inputs.config }} --force
