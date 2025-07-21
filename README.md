@@ -1,2 +1,3 @@
-# builder
-The builder image for all of the community sites.
+# Site Builder
+
+This is the site builder for the St Clair Community sites and pages.
