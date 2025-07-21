@@ -7,12 +7,8 @@ inputs:
     default: .github/mkdocs.yml
 runs:
   using: docker
-  image: ghcr.io/stclaircounty/builder:latest
-  steps:
-    - name: Build Mkdocs Site and Push
-      shell: sh
-      run: |
-        git config --global --add safe.directory ${PWD}
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-        mkdocs gh-deploy --config-file ${{ inputs.config }} --force
+  image: ghcr.io/${{ github.action_repository }}:${{ github.action_ref }}
+  env:
+    GIT_USERNAME: ${{ github.actor }}
+    GIT_USER_ID: ${{ github.actor_id }}
+    MKDOCS_CONFIG: ${{ inputs.config }}

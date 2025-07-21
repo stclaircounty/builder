@@ -1,11 +1,14 @@
 FROM python:3-alpine
 
 ADD requirements.txt /root/requirements.txt
-
-RUN mkdir /workspace
+ADD entrypoint.sh /entrypoint.sh
 
 RUN apk add --no-cache cairo cairo-dev git && \
     pip install -r /root/requirements.txt && \
     rm /root/requirements.txt
 
-WORKDIR /workspace
+ENV GIT_USERNAME
+ENV GIT_USER_ID
+ENV MKDOCS_CONFIG
+
+ENTRYPOINT [ "/entrypoint.sh" ]
