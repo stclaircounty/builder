@@ -7,7 +7,7 @@ inputs:
     default: .github/mkdocs.yml
 runs:
   using: docker
-  image: ghcr.io/${{ github.action_repository }}:${{ github.action_ref }}
+  image: ghcr.io/stclaircounty/builder:latest
   steps:
     - name: Build Mkdocs Site and Push
       shell: sh
