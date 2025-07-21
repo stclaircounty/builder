@@ -7,8 +7,8 @@ RUN apk add --no-cache cairo cairo-dev git && \
     pip install -r /root/requirements.txt && \
     rm /root/requirements.txt
 
-ENV GIT_USERNAME
-ENV GIT_USER_ID
-ENV MKDOCS_CONFIG
+ENV GIT_USERNAME   github
+ENV GIT_USER_ID    100000
+ENV MKDOCS_CONFIG  .github/mkdocs.yml
 
 ENTRYPOINT [ "/entrypoint.sh" ]
