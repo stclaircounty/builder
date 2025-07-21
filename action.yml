@@ -6,7 +6,8 @@ inputs:
     required: false
     default: .github/mkdocs.yml
 runs:
-  using: composite
+  using: docker
+  image: ghcr.io/${{ github.action_repository }}:${{ github.action_ref }}
   steps:
     - name: Build Mkdocs Site and Push
       shell: sh
